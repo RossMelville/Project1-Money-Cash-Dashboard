@@ -2,7 +2,7 @@ require ('pg')
 
 class SqlRunner
 
-  def self.run( query, values)
+  def self.run( sql, values)
     begin 
       db = PG.connect({ dbname: 'money', host: 'localhost'})
       db.prepare("query", sql)
