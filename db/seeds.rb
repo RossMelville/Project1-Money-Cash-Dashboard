@@ -5,3 +5,4 @@ require ('pry')
 
 tag1 = Tag.new('name' => 'clothes')
 tag1.save
+Tag.delete_all
