@@ -4,6 +4,7 @@ require_relative ('../models/transaction.rb')
 require ('pry')
 
 Tag.delete_all
+Merchant.delete_all
 
 tag1 = Tag.new('name' => 'Clothes')
 tag1.save
@@ -49,3 +50,4 @@ merchant8.save
 
 merchant9 = Merchant.new('name' => 'River Island')
 merchant9.save
+
