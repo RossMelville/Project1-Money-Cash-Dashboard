@@ -51,3 +51,5 @@ merchant8.save
 merchant9 = Merchant.new('name' => 'River Island')
 merchant9.save
 
+transaction1 = Transaction.new('value' => 4450, 'transaction_date' => '2017-07-02', 'merchant_id' => 10, 'tag_id' => 8 )
+transaction1.save
