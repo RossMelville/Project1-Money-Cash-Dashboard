@@ -30,8 +30,15 @@ class Transaction
     transaction = SqlRunner.run(sql, values)
     return Transaction.new(transaction)
   end
-  
 
+
+  
+  def self.total_spent
+    total = 0
+    results = Transaction.find_all
+    results.map { |result| total += value }
+    return total
+  end
 
   def self.delete_all
     sql = "DELETE FROM transactions;"
