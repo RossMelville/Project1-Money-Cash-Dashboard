@@ -38,7 +38,8 @@ class Transaction
         WHERE id = $1;"
     values = [@merchant_id]
     results = SqlRunner.run(sql, values)
-    return results.map {|result| Merchant.new(result)}
+    merchant = results.map {|result| Merchant.new(result)}
+    return merchant.first.name
   end
 
   def tag()
@@ -46,7 +47,8 @@ class Transaction
         WHERE id = $1;"
     values = [@tag_id]
     results = SqlRunner.run(sql, values)
-    return results.map {|result| Tag.new(result)}
+    tag = results.map {|result| Tag.new(result)}
+    return tag.first.name
   end
 
   def value_to_pounds()
