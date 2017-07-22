@@ -49,14 +49,15 @@ class Transaction
     return results.map {|result| Tag.new(result)}
   end
 
-  # def pence_to_pounds()
-  #   sql = "SELECT * FROM transactions
-  #       WHERE id = $1;"
-  #   values = [@id]
-  #   results = SqlRunner.run(sql, values)
-  #   transaction = results.map {|result| Transaction.new(result)}
-  #   return transaction['value'].to_f.round(2) / 100
-  # end
+  def value_to_pounds()
+    sql = "SELECT * FROM transactions
+        WHERE id = $1;"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    transaction = results.map {|result| Transaction.new(result)}
+    amount = transaction.first.value.to_f.round(2)
+    return amount/100
+  end
 
 
   
