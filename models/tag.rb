@@ -33,7 +33,7 @@ class Tag
         WHERE tag_id = $1;"
     values = [@id]
     results = SqlRunner.run(sql, values)
-    results.map { |result| total += result.value }
+    results.map { |result| total += result['value'].to_i }
     return total
   end
 

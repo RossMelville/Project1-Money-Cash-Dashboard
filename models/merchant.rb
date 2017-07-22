@@ -26,15 +26,15 @@ class Merchant
     return results.map { |result| Transaction.new(result) }
   end
 
-  # def total_spent()
-  #   total = 0
-  #   sql = "SELECT * FROM transactions
-  #       WHERE merchant_id = $1;"
-  #   values = [@id]
-  #   results = SqlRunner.run(sql, values)
-  #   results.map { |result| total += result.value }
-  #   return total
-  # end
+  def total_spent()
+    total = 0
+    sql = "SELECT * FROM transactions
+        WHERE merchant_id = $1;"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    results.map { |result| total += result['value'].to_i}
+    return total
+  end
 
 
 

@@ -33,12 +33,12 @@ class Transaction
 
 
   
-  # def self.total_spent
-  #   total = 0
-  #   results = Transaction.find_all
-  #   results.map { |result| total += result.value }
-  #   return total
-  # end
+  def self.total_spent
+    total = 0
+    results = Transaction.find_all
+    results.map { |result| total += result.value }
+    return total
+  end
 
   def self.delete_all
     sql = "DELETE FROM transactions;"
