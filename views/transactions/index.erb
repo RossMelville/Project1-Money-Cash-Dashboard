@@ -3,8 +3,8 @@
 
 <h3>Registered Transactions</h3>
 <% @transactions.each do |transaction| %>
-  <p>Merchant: <%= transaction.merchant_id  %></p>
-  <p>Tag: <%= transaction.tag_id  %></p>
+  <p>Merchant: <%= transaction.merchant.name  %></p>
+  <p>Tag: <%= transaction.tag.name  %></p>
   <p>Value: <%= transaction.value %></p>
   <hr />
   <% end %>

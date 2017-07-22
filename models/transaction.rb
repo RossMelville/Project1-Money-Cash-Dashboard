@@ -1,4 +1,6 @@
 require_relative ('../db/sql_runner.rb')
+require_relative ('./merchant.rb')
+require_relative ('./tag.rb')
 require ('date')
 class Transaction
 
@@ -30,6 +32,31 @@ class Transaction
     transaction = SqlRunner.run(sql, values)
     return Transaction.new(transaction)
   end
+
+  def merchant()
+    sql = "SELECT * FROM merchants
+        WHERE id = $1;"
+    values = [@merchant_id]
+    results = SqlRunner.run(sql, values)
+    return results.map {|result| Merchant.new(result)}
+  end
+
+  def tag()
+    sql = "SELECT * FROM tags
+        WHERE id = $1;"
+    values = [@tag_id]
+    results = SqlRunner.run(sql, values)
+    return results.map {|result| Tag.new(result)}
+  end
+
+  # def pence_to_pounds()
+  #   sql = "SELECT * FROM transactions
+  #       WHERE id = $1;"
+  #   values = [@id]
+  #   results = SqlRunner.run(sql, values)
+  #   transaction = results.map {|result| Transaction.new(result)}
+  #   return transaction['value'].to_f.round(2) / 100
+  # end
 
 
   

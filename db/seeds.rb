@@ -52,13 +52,13 @@ merchant8.save
 merchant9 = Merchant.new('name' => 'River Island')
 merchant9.save
 
-transaction1 = Transaction.new('value' => 4450, 'transaction_date' => '2017-07-02', 'merchant_id' => 181, 'tag_id' => 121 )
+transaction1 = Transaction.new('value' => 4450, 'transaction_date' => '2017-07-02', 'merchant_id' => 208, 'tag_id' => 139 )
 transaction1.save
 
-transaction2 = Transaction.new('value' => 555, 'transaction_date' => '2017-06-02', 'merchant_id' => 181, 'tag_id' => 122 )
+transaction2 = Transaction.new('value' => 555, 'transaction_date' => '2017-06-02', 'merchant_id' => 208, 'tag_id' => 140 )
 transaction2.save
 
-transaction3 = Transaction.new('value' => 10000, 'transaction_date' => '2017-07-10', 'merchant_id' => 182, 'tag_id' => 122 )
+transaction3 = Transaction.new('value' => 10000, 'transaction_date' => '2017-07-10', 'merchant_id' => 209, 'tag_id' => 140 )
 transaction3.save
 
 # transaction4 = Transaction.new('value' => 85000, 'transaction_date' => '2017-07-02', 'merchant_id' => 101, 'tag_id' => 68 )
@@ -76,6 +76,8 @@ transaction3.save
 binding.pry
 
 nil
+
+
 
 
 
