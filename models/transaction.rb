@@ -65,9 +65,9 @@ class Transaction
   
   def self.total_spent
     total = 0
-    results = Transaction.find_all
+    results = Transaction.all
     results.map { |result| total += result.value }
-    return total
+    return total.to_f.round(2)/100
   end
 
   def self.delete_all
