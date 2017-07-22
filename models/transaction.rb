@@ -29,4 +29,11 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
+  def self.find_all
+    sql = "SELECT * FROM transactions;"
+    values = []
+    transactions = SqlRunner.run(sql, values)
+    return transactions.map { |transaction| Transaction.new(transaction)}
+  end
+
 end
