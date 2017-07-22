@@ -6,6 +6,14 @@ require_relative ('../models/merchant.rb')
 require_relative ('../models/tag.rb')
 
 get '/transactions' do
-  @transactions = Transaction.find_all
+  @merchants = Merchant.all
+  @tags = Tag.all
+  @transactions = Transaction.all
   erb( :"transactions/index" )
+end
+
+post '/transactions' do
+  @transaction = Transaction.new( params )
+  @transaction.save
+  redirect to '/transactions'
 end

@@ -38,6 +38,13 @@ class Tag
   end
 
 
+  def self.all
+    sql = "SELECT * FROM tags;"
+    values = []
+    tags = SqlRunner.run(sql, values)
+    return tags.map {|tag| Tag.new(tag)}
+  end
+
   def self.delete_all()
     sql = "DELETE FROM tags;"
     values = []
