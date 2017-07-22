@@ -1,4 +1,5 @@
 require_relative ('../db/sql_runner.rb')
+require_relative ('./transaction.rb')
 
 class Merchant
 
@@ -16,6 +17,24 @@ class Merchant
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
+
+  def transactions()
+    sql = "SELECT * FROM transactions
+        WHERE merchant_id = $1;"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |result| Transaction.new(result) }
+  end
+
+  # def total_spent()
+  #   total = 0
+  #   sql = "SELECT * FROM transactions
+  #       WHERE merchant_id = $1;"
+  #   values = [@id]
+  #   results = SqlRunner.run(sql, values)
+  #   results.map { |result| total += result.value }
+  #   return total
+  # end
 
 
 

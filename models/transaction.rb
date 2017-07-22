@@ -23,22 +23,22 @@ class Transaction
     @id = results.first()['id'].to_i
   end
 
-  def find()
-    sql = "SELECT * FROM transactions 
-        WHERE id = $1;"
-    values = [@id]
-    transaction = SqlRunner.run(sql, values)
-    return Transaction.new(transaction)
-  end
+  # def find()
+  #   sql = "SELECT * FROM transactions 
+  #       WHERE id = $1;"
+  #   values = [@id]
+  #   transaction = SqlRunner.run(sql, values)
+  #   return Transaction.new(transaction)
+  # end
 
 
   
-  def self.total_spent
-    total = 0
-    results = Transaction.find_all
-    results.map { |result| total += value }
-    return total
-  end
+  # def self.total_spent
+  #   total = 0
+  #   results = Transaction.find_all
+  #   results.map { |result| total += result.value }
+  #   return total
+  # end
 
   def self.delete_all
     sql = "DELETE FROM transactions;"
