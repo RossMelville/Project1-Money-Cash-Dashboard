@@ -23,13 +23,13 @@ class Transaction
     @id = results.first()['id'].to_i
   end
 
-  # def find()
-  #   sql = "SELECT * FROM transactions 
-  #       WHERE id = $1;"
-  #   values = [@id]
-  #   transaction = SqlRunner.run(sql, values)
-  #   return Transaction.new(transaction)
-  # end
+  def find()
+    sql = "SELECT * FROM transactions 
+        WHERE id = $1;"
+    values = [@id]
+    transaction = SqlRunner.run(sql, values)
+    return Transaction.new(transaction)
+  end
 
 
   
