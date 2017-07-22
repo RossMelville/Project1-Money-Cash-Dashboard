@@ -2,6 +2,7 @@ require_relative ('../db/sql_runner.rb')
 require ('date')
 class Transaction
 
+  attr_reader :id, :value, :transaction_date, :merchant_id, :tag_id
 
   def initialize (options)
     @id = options['id'].to_i if options['id']
@@ -21,7 +22,16 @@ class Transaction
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
+
+  def find()
+    sql = "SELECT * FROM transactions 
+        WHERE id = $1;"
+    values = [@id]
+    transaction = SqlRunner.run(sql, values)
+    return Transaction.new(transaction)
+  end
   
+
 
   def self.delete_all
     sql = "DELETE FROM transactions;"
