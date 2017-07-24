@@ -102,11 +102,11 @@ class Transaction
     return transactions.map { |transaction| Transaction.new(transaction)}
   end
 
-  def self.transaction(id)
+  def self.find(id)
     sql = "SELECT * FROM transactions
         WHERE id = $1;"
     values = [id]
-    results = SqlRunner.run(sql, values)
+    results = SqlRunner.run(sql, values).first
     return Transaction.new(results)
   end
 
