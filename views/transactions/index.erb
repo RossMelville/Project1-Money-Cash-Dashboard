@@ -48,9 +48,10 @@
   <p>Tag: <%= transaction.tag  %></p>
   <p>Value: £ <%= transaction.value_to_pounds %></p>
   <form method="get" action="/transactions/<%= transaction.id %>/edit">
-    <input type="submit" value="Edit Transaction"/>
+    <input type="submit" value="Edit"/>
   </form>
   <form method="post" action="/transactions/<%= transaction.id %>/delete">
-    <input type="submit" value="Delete Transaction"/>
-  <hr /> -->
-  <% end %>
+    <input type="submit" value="Delete"/>
+  </form>
+  <hr /> 
+<% end %>

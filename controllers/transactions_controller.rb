@@ -30,3 +30,9 @@ get '/transactions/:id/edit' do
   @tags = Tag.all
   erb( :"transactions/edit")
 end
+
+post '/transactions/:id' do
+  @transaction = Transaction.new( params )
+  @transaction.update
+  redirect to '/transactions'
+end

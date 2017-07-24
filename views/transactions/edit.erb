@@ -1,0 +1,34 @@
+<form method="post" action="/transactions/<%= @transaction.id %>">
+  <label for="value">Value in pence:</label>
+    <input id="value" 
+    type="number" 
+    name="value" 
+    value="<%= @transaction.value %>" 
+    />
+
+  <label for="date">Select a date:</label>
+    <input type="date"
+     name="transaction_date" 
+     value="<%= @transaction.transaction_date %>"
+     />
+
+  <label for="merchant-select">Select a Merchant</label>
+    <select id="merchant-select" 
+    name="merchant_id" 
+    value=" @transaction.merchant_id">
+      <% @merchants.each do |merchant| %>
+        <option value=<%= merchant.id  %> ><%= merchant.name %></option>
+      <% end %>
+    </select>
+
+    <label for="tag-select">Select a Tag</label>
+      <select id="tag-select" 
+      name="tag_id" 
+      value="<%= @transaction.tag_id %>">
+        <% @tags.each do |tag| %>
+          <option value=<%= tag.id  %>><%= tag.name %></option>
+        <% end %>
+      </select>
+
+    <input type="submit" name="Add Transaction"/>
+</form>
