@@ -1,4 +1,4 @@
-<h1>Transactions</h1>
+<h1>Transactions by Tags</h1>
 <hr />
 
 <h3>Total Spent: £ <%= Transaction.total_spent %></h3>
@@ -30,22 +30,3 @@
 </form>
 <hr />
 
-  <h3>Refine Transactions by Tags</h3>
-
-<form method="get" action="/transactions/tags">
-  <label for="tag-select">Select a tag</label>
-    <% @tags.each do |tag| %>
-      <a href="/transactions/tags/<%= id %>"><%= tag.name %></a>
-    <% end %>
-</form>
-
-
-<h3>Registered Transactions</h3>
-<hr />
-
-<% @transactions.each do |transaction| %>
-  <p>Merchant: <%= transaction.merchant  %></p>
-  <p>Tag: <%= transaction.tag  %></p>
-  <p>Value: £ <%= transaction.value_to_pounds %></p>
-  <hr />
-  <% end %>

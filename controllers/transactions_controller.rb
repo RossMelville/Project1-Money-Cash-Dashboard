@@ -17,3 +17,19 @@ post '/transactions' do
   @transaction.save
   redirect to '/transactions'
 end
+
+get '/transactions/tags' do
+  @merchants = Merchant.all
+  @tags = Tag.all
+  @transactions = Transaction.all
+  erb( :"transactions/tags")
+end
+
+# get '/transactions/tags/:id' do
+#   @merchants = Merchant.all
+#   @tags = Tag.all
+#   tag = params[:id].to_i
+#   results = Transaction.all
+#   @transactions = results.select{ |result| result[:tag_id] = tag }
+#   erb( :"/transactions/tags")
+# end

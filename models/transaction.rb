@@ -83,4 +83,12 @@ class Transaction
     return transactions.map { |transaction| Transaction.new(transaction)}
   end
 
+  def self.tag(id)
+    sql = "SELECT * FROM transactions
+        WHERE tag_id = $1;"
+    values = [id]
+    transactions = SqlRunner.run(sql, values)
+    return transactions.map { |transaction| Transaction.new(transaction)}
+  end
+
 end
