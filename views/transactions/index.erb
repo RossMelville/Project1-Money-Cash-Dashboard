@@ -41,6 +41,9 @@
 
 
 <h3>Registered Transactions</h3>
+  <% if @tagtotal %>
+  <p>Total for <%= @tag.name %> is £ <%= @tagtotal %></p>
+  <% end %>
 <hr />
 
 <% @transactions.each do |transaction| %>

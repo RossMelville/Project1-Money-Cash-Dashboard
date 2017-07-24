@@ -1,6 +1,7 @@
 require_relative ('../db/sql_runner.rb')
 require_relative ('./merchant.rb')
 require_relative ('./tag.rb')
+require_relative ('../app.rb')
 require ('date')
 class Transaction
 
@@ -79,8 +80,15 @@ class Transaction
     SqlRunner.run(sql, values)
   end
 
-
   
+
+  def self.tag_total_spent(id)
+    total = 0
+    results = Transaction.tag(id)
+    results.map {|result| total += result.value}
+    return total.to_f.round(2)/100
+  end
+
   def self.total_spent
     total = 0
     results = Transaction.all
@@ -116,5 +124,7 @@ class Transaction
     results = SqlRunner.run(sql, values).first
     return Transaction.new(results)
   end
+
+
 
 end
