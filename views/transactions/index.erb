@@ -2,6 +2,9 @@
 <hr />
 
 <h3>Total Spent: £ <%= Transaction.total_spent %></h3>
+  <% if Transaction.total_spent > settings.budget %>
+    <p>Warning you have exceeded your budget</p>
+  <% end %>
 
 <h3>Add Transaction</h3>
 
