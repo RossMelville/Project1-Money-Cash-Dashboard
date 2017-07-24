@@ -30,14 +30,14 @@
 </form>
 <hr />
 
+<section>
   <h3>Refine Transactions by Tags</h3>
-
-<form method="get" action="/transactions/tags">
-  <label for="tag-select">Select a tag</label>
-    <% @tags.each do |tag| %>
-      <a href="/transactions/tags/<%= id %>"><%= tag.name %></a>
-    <% end %>
-</form>
+    <ul>
+      <% @tags.each do |tag| %>
+        <li> <a href="/transactions?type=<%= tag.id %>"><%= tag.name %></a></li> 
+      <% end %>
+    </ul>
+</section>
 
 
 <h3>Registered Transactions</h3>
