@@ -102,4 +102,12 @@ class Transaction
     return transactions.map { |transaction| Transaction.new(transaction)}
   end
 
+  def self.transaction(id)
+    sql = "SELECT * FROM transactions
+        WHERE id = $1;"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return Transaction.new(results)
+  end
+
 end

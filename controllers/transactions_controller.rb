@@ -24,3 +24,6 @@ post '/transactions' do
   redirect to '/transactions'
 end
 
+get '/transactions/:id/edit' do
+  erb( :"transactions/edit")
+end
