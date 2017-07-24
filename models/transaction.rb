@@ -61,6 +61,17 @@ class Transaction
     return amount/100
   end
 
+  def update()
+    sql = "UPDATE transactions SET
+        value = $2,
+        transaction_date = $3,
+        merchant_id = $4,
+        tag_id = $5
+        WHERE id = $1;"
+    values = [ @id, @value, @transaction_date, @merchant_id,  @tag_id ]
+    SqlRunner.run(sql, values)
+  end
+
 
   
   def self.total_spent
