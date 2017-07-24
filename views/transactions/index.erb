@@ -50,7 +50,7 @@
   <form method="get" action="/transactions/<%= transaction.id %>/edit">
     <input type="submit" value="Edit"/>
   </form>
-  <form method="post" action="/transactions/<%= transaction.id %>/delete">
+  <form method="post" action="/transactions/delete/<%= transaction.id %>">
     <input type="submit" value="Delete"/>
   </form>
   <hr /> 

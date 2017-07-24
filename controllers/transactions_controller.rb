@@ -36,3 +36,9 @@ post '/transactions/:id' do
   @transaction.update
   redirect to '/transactions'
 end
+
+post '/transactions/delete/:id' do
+  @transaction = Transaction.find( params[:id] )
+  @transaction.delete
+  redirect to '/transactions'
+end
