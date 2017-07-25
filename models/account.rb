@@ -6,10 +6,24 @@ require_relative ('../app.rb')
 
 class Account
 
-def initialize (options)
-  @id = options['id'].to_i if options['id']
-  @name = options['name']
-  @balance = options['balance'].to_i
-end
+  def initialize (options)
+    @id = options['id'].to_i if options['id']
+    @name = options['name']
+    @balance = options['balance'].to_i
+  end
+
+  def save
+    sql = "INSERT INTO accounts
+        (name, balance)
+        VALUES
+        ($1, $2)
+        RETURNING id;"
+    values = [@name, @balance]
+    results = SqlRunner.run(sql, values)
+    @id = results.first()['id'].to_i
+  end
+
+  
+
 
 end
