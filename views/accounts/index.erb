@@ -1,0 +1,6 @@
+<h1>Accounts</h1>
+<hr />
+
+<% @accounts.each do |account| %>
+  <p>Account: <%= account.name %></p>
+  <p>Balance: <%= account.balance_to_pounds %></p>

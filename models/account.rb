@@ -32,6 +32,16 @@ class Account
     SqlRunner.run(sql, values)
   end
 
+  def balance_to_pounds()
+    sql = "SELECT * FROM accounts
+        WHERE id = $1;"
+    values = [@id]
+    results = SqlRunner.run(sql, values)
+    account = results.map { |result| Account.new }
+    amount = account.first.balance.to_f.round(2)
+    return amount/100
+  end
+
 
   def self.all
     sql = "SELECT * FROM accounts;"
