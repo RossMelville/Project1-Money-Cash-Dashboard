@@ -10,6 +10,8 @@ get '/transactions' do
     @tag = Tag.find(params[:type])
     @transactions = Transaction.tag(params[:type])
     @tagtotal = Transaction.tag_total_spent(params[:type])
+  elsif params['date1'] != nil
+    @transactions = Transaction.by_dates(params[:date1], params[:date2])
   else
     @transactions = Transaction.all
   end

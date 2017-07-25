@@ -81,7 +81,7 @@ class Transaction
   end
 
 
-  def self.by_month(date1, date2)
+  def self.by_dates(date1, date2)
     sql = "SELECT * FROM transactions
       WHERE transaction_date >= $1 and
       transaction_date <= $2;"

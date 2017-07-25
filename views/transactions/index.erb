@@ -42,6 +42,17 @@
     </ul>
 </section>
 
+<form method="get" action="/transactions">
+  <h3>Refine Transactions by Dates</h3>
+  <label for="date1">Please select the first date</label>
+    <input type="date" name="date1"/>
+  
+  <label for="date2">Please select the second date</label>
+    <input type="date" name="date2"/>
+
+  <input type="submit" name="Go">
+</form>
+
 
 <h3>Registered Transactions</h3>
   <% if @tagtotal %>
