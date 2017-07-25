@@ -36,6 +36,13 @@ class Merchant
     return total
   end
 
+  def transaction_count
+    total = 0
+    results = Transaction.merchant(@id)
+    results.map { |result| total += 1 }
+    return total
+  end
+
 
 
   def self.find(id)
