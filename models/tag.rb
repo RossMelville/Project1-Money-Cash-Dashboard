@@ -26,6 +26,13 @@ class Tag
     return results.map {|result| Transaction.new(result)}
   end
 
+  def transaction_count()
+    total = 0
+    results = Transaction.tag(@id)
+    results.map {|result| total += 1}
+    return total
+  end
+
 
 
 
