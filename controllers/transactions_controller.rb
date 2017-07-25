@@ -14,6 +14,11 @@ get '/transactions' do
   
   elsif params['date1'] != nil
     @transactions = Transaction.by_dates(params[:date1], params[:date2])
+
+  elsif params['merchant'] != nil
+    @merchant = Merchant.find(params[:merchant])
+    @transactions = Transaction.merchant(params[:merchant])
+    @merchanttotal = Transaction.merchant_total_spent(params[:merchant])
   
   else
     @transactions = Transaction.all

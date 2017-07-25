@@ -43,6 +43,17 @@
 </section>
 
 <form method="get" action="/transactions">
+  <h3>Refine Transactions by Merchant</h3>
+  <label for="merchant-find">Please select the merchant</label>
+    <select id="merchant" name="merchant">
+      <% @merchants.each do |merchant| %>
+        <option value=<%= merchant.id %>><%= merchant.name %></option>
+      <% end %>
+    </select>
+  <input type="submit" name="Find by Merchant">
+</form>
+
+<form method="get" action="/transactions">
   <h3>Refine Transactions by Dates</h3>
   <label for="date1">Please select the first date</label>
     <input type="date" name="date1"/>
@@ -50,7 +61,7 @@
   <label for="date2">Please select the second date</label>
     <input type="date" name="date2"/>
 
-  <input type="submit" name="Go">
+  <input type="submit" name="Find by Date">
 </form>
 
 
@@ -58,6 +69,11 @@
   <% if @tagtotal %>
   <p>Total for <%= @tag.name %> is £ <%= @tagtotal %></p>
   <% end %>
+
+  <% if @merchanttotal %>
+  <p>Total for <%= @merchant.name %> is £ <%= @merchanttotal %></p>
+  <% end %>
+
 <hr />
 
 <% @transactions.each do |transaction| %>

@@ -42,7 +42,7 @@ class Merchant
     sql = "SELECT * FROM merchants
         WHERE id = $1"
     values = [id]
-    results = SqlRunner.run(sql, values)
+    results = SqlRunner.run(sql, values).first
     return Merchant.new(results)
   end
 
