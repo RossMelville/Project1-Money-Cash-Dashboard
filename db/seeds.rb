@@ -52,30 +52,30 @@ merchant8.save
 merchant9 = Merchant.new('name' => 'River Island')
 merchant9.save
 
-transaction1 = Transaction.new('value' => 4450, 'transaction_date' => '2017-07-02', 'merchant_id' => 253, 'tag_id' => 169 )
+transaction1 = Transaction.new('value' => 4450, 'transaction_date' => '2017-07-02', 'merchant_id' => 1, 'tag_id' => 1 )
 transaction1.save
 
-transaction2 = Transaction.new('value' => 555, 'transaction_date' => '2017-06-02', 'merchant_id' => 253, 'tag_id' => 169 )
+transaction2 = Transaction.new('value' => 555, 'transaction_date' => '2017-06-02', 'merchant_id' => 1, 'tag_id' => 2 )
 transaction2.save
 
-transaction3 = Transaction.new('value' => 10000, 'transaction_date' => '2017-07-10', 'merchant_id' => 256, 'tag_id' => 170 )
+transaction3 = Transaction.new('value' => 10000, 'transaction_date' => '2017-07-10', 'merchant_id' => 2, 'tag_id' => 3 )
 transaction3.save
 
-# transaction4 = Transaction.new('value' => 85000, 'transaction_date' => '2017-07-02', 'merchant_id' => 101, 'tag_id' => 68 )
-# transaction4.save
+transaction4 = Transaction.new('value' => 85000, 'transaction_date' => '2017-07-02', 'merchant_id' => 2, 'tag_id' => 3 )
+transaction4.save
 
-# transaction5 = Transaction.new('value' => 3365, 'transaction_date' => '2017-06-12', 'merchant_id' => 102, 'tag_id' => 68 )
-# transaction5.save
+transaction5 = Transaction.new('value' => 3365, 'transaction_date' => '2017-06-12', 'merchant_id' => 3, 'tag_id' => 5 )
+transaction5.save
 
-# transaction6 = Transaction.new('value' => 7750, 'transaction_date' => '2017-07-02', 'merchant_id' => 102, 'tag_id' => 68)
-# transaction6.save
+transaction6 = Transaction.new('value' => 7750, 'transaction_date' => '2017-07-02', 'merchant_id' => 4, 'tag_id' => 6)
+transaction6.save
 
-# transaction7 = Transaction.new('value' => 340, 'transaction_date' => '2017-07-12', 'merchant_id' => 102, 'tag_id' => 67 )
-# transaction7.save
+transaction7 = Transaction.new('value' => 340, 'transaction_date' => '2017-07-12', 'merchant_id' => 6, 'tag_id' => 4 )
+transaction7.save
 
 
 
-Transaction.find(91)
+binding.pry
 
 nil
 

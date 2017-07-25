@@ -27,15 +27,7 @@ class Tag
     return results.map {|result| Transaction.new(result)}
   end
 
-  # def total_spent()
-  #   total = 0
-  #   sql = "SELECT * FROM transactions
-  #       WHERE tag_id = $1;"
-  #   values = [@id]
-  #   results = SqlRunner.run(sql, values)
-  #   results.map { |result| total += result['value'].to_i }
-  #   return total
-  # end
+
 
 
   def self.find(id)

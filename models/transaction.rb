@@ -81,15 +81,19 @@ class Transaction
   end
 
 
-  
+  def self.by_month(date1, date2)
+    sql = "SELECT * FROM transactions
+      WHERE transaction_date >= $1 and
+      transaction_date <= $2;"
+    values = [date1, date2]
+    results = SqlRunner.run(sql, values)
+    return results.map {|result| Transaction.new(result)}
+  end
 
   def self.tag_total_spent(id)
     total = 0
     results = Transaction.tag(id)
     results.map {|result| total += result.value}
-
-puts settings.budget
-
     return total.to_f.round(2)/100
   end
 
