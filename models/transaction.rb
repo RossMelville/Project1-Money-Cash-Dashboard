@@ -10,7 +10,7 @@ class Transaction
   def initialize (options)
     @id = options['id'].to_i if options['id']
     @value = options['value'].to_i
-    @transaction_date = options['transaction_date']
+    @transaction_date = options['transaction_date'].parse
     @merchant_id = options['merchant_id'].to_i
     @tag_id = options['tag_id'].to_i
   end
@@ -97,6 +97,11 @@ class Transaction
     return total.to_f.round(2)/100
   end
 
+  def self.merchant_total_spent(id)
+    total = 0
+
+  end
+
   def self.total_spent
     total = 0
     results = Transaction.all
@@ -123,6 +128,14 @@ class Transaction
     values = [id]
     transactions = SqlRunner.run(sql, values)
     return transactions.map { |transaction| Transaction.new(transaction)}
+  end
+
+  def self.merchant(id)
+    sql = "SELECT * FROM transactions
+        WHERE merchant_id = $1"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return results.map { |result| Transaction.new(result) }
   end
 
   def self.find(id)
