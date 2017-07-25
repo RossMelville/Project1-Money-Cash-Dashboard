@@ -1,4 +1,4 @@
-require_relative ('..db/sql_runner.rb')
+require_relative ('../db/sql_runner.rb')
 require_relative ('./transaction.rb')
 require_relative ('./merchant.rb')
 require_relative ('./tag.rb')
@@ -23,7 +23,14 @@ class Account
     @id = results.first()['id'].to_i
   end
 
-  
+
+
+  def self.delete_all
+    sql = "DELETE FROM accounts;"
+    values = []
+    SqlRunner.run(sql, values)
+  end
+
 
 
 end

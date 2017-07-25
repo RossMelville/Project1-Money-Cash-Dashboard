@@ -1,11 +1,13 @@
 require_relative ('../models/merchant.rb')
 require_relative ('../models/tag.rb')
 require_relative ('../models/transaction.rb')
+require_relative ('../models/account.rb')
 require ('pry')
 
 Transaction.delete_all
 Tag.delete_all
 Merchant.delete_all
+Account.delete_all
 
 tag1 = Tag.new('name' => 'Clothes')
 tag1.save
@@ -73,7 +75,10 @@ transaction6.save
 transaction7 = Transaction.new('value' => 340, 'transaction_date' => '2017-07-12', 'merchant_id' => 6, 'tag_id' => 4 )
 transaction7.save
 
+account1 = Account.new('name' => 'current account', 'balance' => 1000 )
+account1.save
 
+Account.delete_all
 
 binding.pry
 

@@ -1,6 +1,7 @@
 require_relative ('../db/sql_runner.rb')
 require_relative ('./merchant.rb')
 require_relative ('./tag.rb')
+require_relative ('./account.rb')
 require_relative ('../app.rb')
 require ('date')
 class Transaction
