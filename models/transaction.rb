@@ -99,7 +99,9 @@ class Transaction
 
   def self.merchant_total_spent(id)
     total = 0
-
+    results = Transaction.merchant(id)
+    results.map { |result| total += result.value }
+    return total.to_f.round(2)/100
   end
 
   def self.total_spent
