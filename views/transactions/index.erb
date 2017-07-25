@@ -33,14 +33,16 @@
 </form>
 <hr />
 
-<section>
-  <h3>Refine Transactions by Tags</h3>
-    <ul>
+<form method="get" action="/transactions">
+  <h3>Refine Transactions by Tag</h3>
+  <label for="tag-find">Please select the tag</label>
+    <select id="tag" name="tag">
       <% @tags.each do |tag| %>
-        <li> <a href="/transactions?type=<%= tag.id %>"><%= tag.name %></a></li> 
+        <option value=<%= tag.id %>><%= tag.name %></option>
       <% end %>
-    </ul>
-</section>
+    </select>
+  <input type="submit" name="Find by Tag">
+</form>
 
 <form method="get" action="/transactions">
   <h3>Refine Transactions by Merchant</h3>
@@ -55,10 +57,12 @@
 
 <form method="get" action="/transactions">
   <h3>Refine Transactions by Dates</h3>
-  <label for="date1">Please select the first date</label>
+  <label for="date1">Please select the first date
+  </label>
     <input type="date" name="date1"/>
   
-  <label for="date2">Please select the second date</label>
+  <label for="date2">Please select the second date
+  </label>
     <input type="date" name="date2"/>
 
   <input type="submit" name="Find by Date">

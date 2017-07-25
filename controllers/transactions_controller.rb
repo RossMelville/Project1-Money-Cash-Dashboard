@@ -7,10 +7,10 @@ require_relative ('../models/tag.rb')
 
 get '/transactions' do
 
-  if params['type'] != nil
-    @tag = Tag.find(params[:type])
-    @transactions = Transaction.tag(params[:type])
-    @tagtotal = Transaction.tag_total_spent(params[:type])
+  if params['tag'] != nil
+    @tag = Tag.find(params[:tag])
+    @transactions = Transaction.tag(params[:tag])
+    @tagtotal = Transaction.tag_total_spent(params[:tag])
   
   elsif params['date1'] != nil
     @transactions = Transaction.by_dates(params[:date1], params[:date2])
