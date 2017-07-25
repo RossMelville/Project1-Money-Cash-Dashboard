@@ -23,6 +23,15 @@ class Account
     @id = results.first()['id'].to_i
   end
 
+  def update
+    sql = "UPDATE accounts SET
+        name = $2,
+        balance = $3
+        WHERE id = $1;"
+    values = [@id, @name, @balance]
+    SqlRunner.run(sql, values)
+  end
+
 
 
   def self.delete_all
