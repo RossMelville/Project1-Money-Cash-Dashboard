@@ -4,7 +4,7 @@ require ('pry')
 require_relative ('../models/tag.rb')
 require_relative ('./transactions_controller.rb')
 
-get '/tags' do
+get '/tags/new' do
   erb( :"tags/new")
 end
 

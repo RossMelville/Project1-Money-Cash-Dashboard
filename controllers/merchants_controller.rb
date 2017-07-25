@@ -4,7 +4,7 @@ require ('pry')
 require_relative ('../models/merchant.rb')
 require_relative ('./transactions_controller.rb')
 
-get '/merchants' do
+get '/merchants/new' do
   erb( :"merchants/new" )
 end
 
