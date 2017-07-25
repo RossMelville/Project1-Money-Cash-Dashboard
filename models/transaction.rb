@@ -81,6 +81,15 @@ class Transaction
   end
 
 
+
+  def self.count
+    total = 0
+    results = Transaction.all
+    results.map { |result| total += 1}
+    return total
+  end
+
+
   def self.by_dates(date1, date2)
     sql = "SELECT * FROM transactions
       WHERE transaction_date >= $1 and
