@@ -7,7 +7,6 @@ require_relative ('./transactions_controller.rb')
 
 get '/tags' do
   @tags = Tag.all
-  
   erb( :"tags/index")
 end
 
