@@ -14,19 +14,19 @@
 
   <label for="merchant-select">Select a Merchant</label>
     <select id="merchant-select" 
-    name="merchant_id" 
-    value=" @transaction.merchant_id">
+    name="merchant_id" >
       <% @merchants.each do |merchant| %>
-        <option value=<%= merchant.id  %> ><%= merchant.name %></option>
+        <option value=<%= merchant.id  %> 
+        <%= "selected" if merchant.id == @transaction.merchant_id %>><%= merchant.name %></option>
       <% end %>
     </select>
 
     <label for="tag-select">Select a Tag</label>
       <select id="tag-select" 
-      name="tag_id" 
-      value="<%= @transaction.tag_id %>">
+      name="tag_id" >
         <% @tags.each do |tag| %>
-          <option value=<%= tag.id  %>><%= tag.name %></option>
+          <option value=<%= tag.id  %> 
+          <%= "selected" if tag.id == @transaction.tag_id %>><%= tag.name %></option>
         <% end %>
       </select>
 
