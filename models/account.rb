@@ -33,6 +33,12 @@ class Account
   end
 
 
+  def self.all
+    sql = "SELECT * FROM accounts;"
+    values = []
+    accounts = SqlRunner.run(sql, values)
+    return accounts.map { |account| Account.new }
+  end
 
   def self.delete_all
     sql = "DELETE FROM accounts;"
