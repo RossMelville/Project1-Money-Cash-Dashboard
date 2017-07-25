@@ -86,9 +86,8 @@ class Transaction
     total = 0
     results = Transaction.all
     results.map { |result| total += 1}
-    return total
+    return total.to_f.round(2)
   end
-
 
   def self.by_dates(date1, date2)
     sql = "SELECT * FROM transactions

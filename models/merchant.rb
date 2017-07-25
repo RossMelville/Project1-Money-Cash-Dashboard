@@ -40,7 +40,7 @@ class Merchant
     total = 0
     results = Transaction.merchant(@id)
     results.map { |result| total += 1 }
-    return total
+    return total.to_f.round(2)
   end
 
 

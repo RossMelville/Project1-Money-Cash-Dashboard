@@ -1,4 +1,11 @@
 <h1>Tags</h1>
 <hr />
 
-<h3></h3>
+<% @tags.each do |tag| %>
+  <p>Tag: <%= tag.name %></p>
+  <p>Numer of Transactions: <%= tag.transaction_count.to_i %></p>
+  <p>% of Transactions: <%= (( tag.transaction_count / Transaction.count).to_f * 100).round(2) %>%</p>
+  <p>Spent: £<%= Transaction.tag_total_spent(tag.id) %></p>
+  <p>% of Total Spent: <%= (( Transaction.tag_total_spent(tag.id) / Transaction.total_spent) * 100).round(2) %>%</p>
+  <hr />
+<% end %>
