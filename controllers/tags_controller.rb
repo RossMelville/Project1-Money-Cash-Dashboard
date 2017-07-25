@@ -4,6 +4,10 @@ require ('pry')
 require_relative ('../models/tag.rb')
 require_relative ('./transactions_controller.rb')
 
+get '/tags' do
+  erb( :"tags/index")
+end
+
 get '/tags/new' do
   erb( :"tags/new")
 end

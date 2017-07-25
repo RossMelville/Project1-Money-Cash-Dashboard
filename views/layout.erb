@@ -10,10 +10,15 @@
 <nav>
   <a href="/">Home</a>
   <a href="/transactions">Transactions</a>
+  <a href="/tags">Tags</a>
 </nav>
 
 <section id='content'>
   <p>Your budget is: <%= settings.budget %></p>
+  <h3>Total Spent: £ <%= Transaction.total_spent %></h3>
+    <% if Transaction.total_spent > settings.budget %>
+      <p>Warning you have exceeded your budget</p>
+    <% end %>
 
   <%= yield %> 
 </section>
