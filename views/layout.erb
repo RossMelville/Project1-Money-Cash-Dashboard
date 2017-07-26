@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-GB">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css">
 <link rel="stylesheet" type="text/css" href="/styles.css">
 <head>
 
@@ -7,26 +8,39 @@
 
 </head>
 <body>
-<h1 class="logo">MoneyCashBoard</h1>
-<nav>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/transactions">Transactions</a></li>
-    <li><a href="/tags">Tags</a></li>
-    <li><a href="/merchants">Merchants</a></li>
-    <li><a href="/accounts">Accounts</a></li>
-  </ul>
-</nav>
+<header>
+  <h1 class="masthead">MoneyCashBoard</h1>
 
-<section id='content'>
-  <h3>Total Spent: £ <%= Transaction.total_spent %></h3>
-  <h3>Total balance of accounts: £<%= Account.total_balance %></h3>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/transactions">Transactions</a></li>
+      <li><a href="/tags">Tags</a></li>
+      <li><a href="/merchants">Merchants</a></li>
+      <li><a href="/accounts">Accounts</a></li>
+    </ul>
+  </nav>
+
+</header>
+
+<section class='content'>
+  <h2>Total balance of accounts: </h2>
+  <h2>£ <%= Account.total_balance %></h2>
+  <h2>Total Spent: </h2>
+  <h2>£ <%= Transaction.total_spent %></h2>
+  <h2>Available to Spend: </h2>
+  <h2>£ <%= (Account.total_balance - Transaction.total_spent).round(2) %></h2>
     <% if Transaction.total_spent > Account.total_balance %>
       <p>Warning you have exceeded your budget</p>
     <% end %>
 
-  <%= yield %> 
+   
 </section>
+
+<section>
+  <%= yield %>
+</section>
+
 
 </body>
 
