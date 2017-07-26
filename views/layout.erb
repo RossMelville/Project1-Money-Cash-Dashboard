@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en-GB">
-
+<link rel="stylesheet" type="text/css" href="/styles.css">
 <head>
 
   <title>Money Cash Board</title>
 
 </head>
 <body>
+<h1 class="logo">MoneyCashBoard</h1>
 <nav>
-  <a href="/">Home</a>
-  <a href="/transactions">Transactions</a>
-  <a href="/tags">Tags</a>
-  <a href="/merchants">Merchants</a>
-  <a href="/accounts">Accounts</a>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/transactions">Transactions</a></li>
+    <li><a href="/tags">Tags</a></li>
+    <li><a href="/merchants">Merchants</a></li>
+    <li><a href="/accounts">Accounts</a></li>
+  </ul>
 </nav>
 
 <section id='content'>
-  <p>Your budget is: <%= settings.budget %></p>
   <h3>Total Spent: £ <%= Transaction.total_spent %></h3>
   <h3>Total balance of accounts: £<%= Account.total_balance %></h3>
-    <% if Transaction.total_spent > settings.budget %>
+    <% if Transaction.total_spent > Account.total_balance %>
       <p>Warning you have exceeded your budget</p>
     <% end %>
 
