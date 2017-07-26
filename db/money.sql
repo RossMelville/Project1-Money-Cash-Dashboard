@@ -2,6 +2,12 @@ DROP TABLE transactions;
 DROP TABLE merchants;
 DROP TABLE tags;
 DROP TABLE accounts;
+DROP TABLE budget;
+
+CREATE TABLE budget
+(
+  balance INT4
+);
 
 CREATE TABLE accounts
 (
