@@ -1,6 +1,28 @@
 <h1>Accounts</h1>
+
+<hr />
+
+<h3>Add Account</h3>
+
+<form method="post" action="/accounts">
+  <label for="name">Enter the name of the account</label>
+    <input type="text" name="name" />
+
+  <label for="balance">Enter the balance of the account in pence</label>
+    <input type="number" name="balance" />
+
+  <input type="Submit" name="Add Account" />
+</form>
 <hr />
 
 <% @accounts.each do |account| %>
   <p>Account: <%= account.name %></p>
-  <p>Balance: <%= account.balance_to_pounds %></p>
+  <p>Balance: £ <%= (account.balance.to_f.round(2) / 100) %></p>
+  <form method="get" action="/accounts/<%= account.id %>/edit">
+    <input type="submit" value="Edit"/>
+  </form>
+  <form method="post" action="/accounts/delete/<%= account.id %>">
+    <input type="submit" value="Delete">
+  </form>
+  <hr />
+<% end %>

@@ -1,0 +1,15 @@
+<form method="post" action="/accounts/<%= @account.id %>">
+  <label for="name">Name of Account:</label>
+    <input id="name" 
+    type="text" 
+    name="name"
+    value="<%= @account.name %>"
+    />
+
+    <label for="balance">Balance of account in pence:</label>
+      <input id="balance" 
+      type="number" 
+      name="balance" 
+      value="<%= @account.balance %>"/>
+    <input type="submit" name="Edit Account">
+</form>
