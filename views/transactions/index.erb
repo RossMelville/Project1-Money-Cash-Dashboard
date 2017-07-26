@@ -1,91 +1,97 @@
-<h1>Transactions</h1>
-<hr />
-
-<h3>Add Transaction</h3>
-
-<form method="post" action="/transactions">
-  <label for="value">Value in pence:</label>
-    <input id="value" type="number" name="value" />
-
-  <label for="date">Select a date:</label>
-    <input type="date" name="transaction_date" />
-
-  <label for="merchant-select">Select a Merchant</label>
-    <select id="merchant-select" name="merchant_id">
-      <% @merchants.each do |merchant| %>
-        <option value=<%= merchant.id  %> ><%= merchant.name %></option>
-      <% end %>
-    </select>
-
-    <label for="tag-select">Select a Tag</label>
-      <select id="tag-select" name="tag_id">
-        <% @tags.each do |tag| %>
-          <option value=<%= tag.id  %>><%= tag.name %></option>
-        <% end %>
-      </select>
-
-    <input type="submit" name="Add Transaction"/>
-</form>
-<p>If you need to add a new <a href="/tags/new">Tag</a> or <a href="/merchants/new">Merchant</a> please select the links</p>
-<hr />
-
-<form method="get" action="/transactions">
-  <h3>Refine Transactions by Tag</h3>
-  <label for="tag-find">Please select the tag</label>
-    <select id="tag" name="tag">
-      <% @tags.each do |tag| %>
-        <option value=<%= tag.id %>><%= tag.name %></option>
-      <% end %>
-    </select>
-  <input type="submit" name="Find by Tag">
-</form>
-
-<form method="get" action="/transactions">
-  <h3>Refine Transactions by Merchant</h3>
-  <label for="merchant-find">Please select the merchant</label>
-    <select id="merchant" name="merchant">
-      <% @merchants.each do |merchant| %>
-        <option value=<%= merchant.id %>><%= merchant.name %></option>
-      <% end %>
-    </select>
-  <input type="submit" name="Find by Merchant">
-</form>
-
-<form method="get" action="/transactions">
-  <h3>Refine Transactions by Dates</h3>
-  <label for="date1">Please select the first date
-  </label>
-    <input type="date" name="date1"/>
-  
-  <label for="date2">Please select the second date
-  </label>
-    <input type="date" name="date2"/>
-
-  <input type="submit" name="Find by Date">
-</form>
+<h1 class="fixed">Transactions</h1>
 
 
-<h3>Registered Transactions</h3>
-  <% if @tagtotal %>
-  <p>Total for <%= @tag.name %> is £ <%= @tagtotal %></p>
+<div class="container">
+  <div class="left-element">
+    <h3>Add Transaction</h3>
+      <form class="form1" method="post" action="/transactions">
+        <label for="value">Value in pence:</label>
+          <input id="value" type="number" name="value" />
+
+        <label for="date">Select a date:</label>
+          <input type="date" name="transaction_date" />
+
+        <label for="merchant-select">Select a Merchant</label>
+          <select id="merchant-select" name="merchant_id">
+            <% @merchants.each do |merchant| %>
+              <option value=<%= merchant.id  %> ><%= merchant.name %></option>
+            <% end %>
+          </select>
+
+          <label for="tag-select">Select a Tag</label>
+            <select id="tag-select" name="tag_id">
+              <% @tags.each do |tag| %>
+                <option value=<%= tag.id  %>><%= tag.name %></option>
+              <% end %>
+            </select>
+
+          <input type="submit" name="Add Transaction"/>
+      </form>
+      <p>If you need to add a new <a href="/tags/new">Tag</a> or <a href="/merchants/new">Merchant</a> please select the links</p>
+  </div>
+  <div class="right-element">
+    <form class="form2" method="get" action="/transactions">
+      <h3>Refine Transactions</h3>
+        <select id="tag" name="tag">
+          <% @tags.each do |tag| %>
+            <option value=<%= tag.id %>><%= tag.name %></option>
+          <% end %>
+        </select>
+      <input type="submit" name="Find by Tag">
+    </form>
+
+    <form class="form2" method="get" action="/transactions">
+        <select id="merchant" name="merchant">
+          <% @merchants.each do |merchant| %>
+            <option value=<%= merchant.id %>><%= merchant.name %></option>
+          <% end %>
+        </select>
+      <input type="submit" name="Find by Merchant">
+    </form>
+
+    <form class="form2" method="get" action="/transactions">
+      <input type="date" name="date1"/>
+      <input type="date" name="date2"/>
+      <input type="submit" name="Find by Date"/>
+    </form>
+  </div>
+</div>
+
+<div class="seperate">
+  <h3>Registered Transactions</h3>
+    <% if @tagtotal %>
+    <p>Total for <%= @tag.name %> is £ <%= @tagtotal %></p>
+    <% end %>
+
+    <% if @merchanttotal %>
+    <p>Total for <%= @merchant.name %> is £ <%= @merchanttotal %></p>
+    <% end %>
+
+  <hr />
+</div>
+
+<table>
+  <tr>
+    <th>Merchant</th>
+    <th>Tag</th>
+    <th>Date</th>
+    <th>Value</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% for transaction in @transactions %>
+  <tr>
+      <td><%= transaction.merchant %></td>
+      <td><%= transaction.tag %></td>
+      <td><%= transaction.transaction_date %></td>
+      <td>£ <%= transaction.value_to_pounds %></td>
+      <td><form method="get" action="/transactions/<%= transaction.id %>/edit">
+          <input type="submit" value="Edit"/>
+        </form></td>
+      <td><form method="post" action="/transactions/delete/<%= transaction.id %>">
+          <input type="submit" value="Delete"/>
+        </form>
+      </td>
+  </tr>
   <% end %>
-
-  <% if @merchanttotal %>
-  <p>Total for <%= @merchant.name %> is £ <%= @merchanttotal %></p>
-  <% end %>
-
-<hr />
-
-<% @transactions.each do |transaction| %>
-  <p>Merchant: <%= transaction.merchant  %></p>
-  <p>Tag: <%= transaction.tag  %></p>
-  <p>Value: £ <%= transaction.value_to_pounds %></p>
-  <p>Date: <%= transaction.transaction_date %></p>
-  <form method="get" action="/transactions/<%= transaction.id %>/edit">
-    <input type="submit" value="Edit"/>
-  </form>
-  <form method="post" action="/transactions/delete/<%= transaction.id %>">
-    <input type="submit" value="Delete"/>
-  </form>
-  <hr /> 
-<% end %>
+</table>

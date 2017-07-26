@@ -2,7 +2,7 @@
 
 <hr />
 
-<h3>Add Account</h3>
+<h4>Add Account</h4>
 
 <form method="post" action="/accounts">
   <label for="name">Enter the name of the account</label>
@@ -15,14 +15,25 @@
 </form>
 <hr />
 
-<% @accounts.each do |account| %>
-  <p>Account: <%= account.name %></p>
-  <p>Balance: £ <%= (account.balance.to_f.round(2) / 100) %></p>
-  <form method="get" action="/accounts/<%= account.id %>/edit">
-    <input type="submit" value="Edit"/>
-  </form>
-  <form method="post" action="/accounts/delete/<%= account.id %>">
-    <input type="submit" value="Delete">
-  </form>
-  <hr />
-<% end %>
+<table>
+  <tr>
+    <th>Account</th>
+    <th>Balance</th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% for account in @accounts %>
+  <tr>
+    <td><%= account.name %></td>
+    <td><%= (account.balance.to_f.round(2) / 100) %></td>
+    <td><form method="get" action="/accounts/<%= account.id %>/edit">
+        <input type="submit" value="Edit"/>
+      </form>
+    </td>
+    <td><form method="post" action="/accounts/delete/<%= account.id %>">
+        <input type="submit" value="Delete">
+      </form>
+    </td>
+  </tr>
+  <% end %>
+</table>

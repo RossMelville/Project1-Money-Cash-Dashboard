@@ -25,6 +25,11 @@ header {
   color: red;
 }
 
+.yield {
+  margin: 30px;
+  padding: 100px 0 0 20%;
+}
+
 nav {
   margin: 0;
   width: 100%;
@@ -59,4 +64,61 @@ nav ul li a:hover {
 
 #content {
   padding-left: 20px;
+}
+
+.seperate {
+  padding: 280px 0 0 0;
+}
+/*.form1 {
+  padding: 0 70% 0 0;
+  display: inline-block;
+}
+
+.form2 {
+  padding: 0 0 0 60%;
+  display: inline-block;
+}*/
+
+.container {
+    width: 100%;
+    position: fixed;
+    background-color: white;
+}
+
+.left-element {
+    width: 22%;
+    padding: 50px 50% 0 0;
+    display: inline-block;
+    position: absolute;
+}
+
+.right-element {
+    width: 40%;
+    padding: 50px 0 0 30%;
+    display: inline-block;
+    position: absolute;
+}
+
+.fixed {
+  position: fixed;
+  background-color: white;
+}
+/*==========================================================*/
+/*======================= TABLES ============================*/
+/*==========================================================*/
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: lightgrey}
+
+th {
+    background-color: black;
+    color: red;
 }

@@ -1,11 +1,22 @@
 <h1>Merchants</h1>
 <hr />
 
-<% @merchants.each do |merchant| %>
-  <p>Merchant: <%= merchant.name %></p>
-  <p>Number of Transactions: <%= merchant.transactions.count.to_i %></p>
-  <p>% of Transactions: <%= (( merchant.transaction_count / Transaction.count).to_f * 100).round(2) %>%</p>
-  <p>Spent: £<%= Transaction.merchant_total_spent(merchant.id) %></p>
-  <p>% of Total Spent: <%= (( Transaction.merchant_total_spent(merchant.id) / Transaction.total_spent) * 100).round(2) %>%</p>
-<hr />
-<% end %>
+<table>
+  <tr>
+    <th>Merchant</th>
+    <th>Number of Transactions</th>
+    <th>% of Transactions</th>
+    <th>Spent</th>
+    <th>% of Total Spent</th>
+  </tr>
+  <% for merchant in @merchants %>
+  <tr>
+    <td><%= merchant.name %></td>
+    <td><%= merchant.transactions.count.to_i %></td>
+    <td><%= (( merchant.transaction_count / Transaction.count).to_f * 100).round(2) %>%</td>
+    <td>£<%= Transaction.merchant_total_spent(merchant.id) %></td>
+    <td><%= (( Transaction.merchant_total_spent(merchant.id) / Transaction.total_spent) * 100).round(2) %>%</td>
+  </tr>
+  <% end %>
+</table>
+
