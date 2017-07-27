@@ -4,7 +4,7 @@
 <div class="container">
   <div class="left-element">
     <h3>Add Transaction</h3>
-      <form class="form1" method="post" action="/transactions">
+      <form method="post" action="/transactions">
         <label for="value">Value in pence:</label>
           <input id="value" type="number" name="value" />
 
@@ -30,7 +30,7 @@
       <p>If you need to add a new <a href="/tags/new">Tag</a> or <a href="/merchants/new">Merchant</a> please select the links</p>
   </div>
   <div class="right-element">
-    <form class="form2" method="get" action="/transactions">
+    <form method="get" action="/transactions">
       <h3>Refine Transactions</h3>
         <select id="tag" name="tag">
           <% @tags.each do |tag| %>
@@ -40,7 +40,7 @@
       <input type="submit" name="Find by Tag">
     </form>
 
-    <form class="form2" method="get" action="/transactions">
+    <form method="get" action="/transactions">
         <select id="merchant" name="merchant">
           <% @merchants.each do |merchant| %>
             <option value=<%= merchant.id %>><%= merchant.name %></option>
@@ -49,7 +49,7 @@
       <input type="submit" name="Find by Merchant">
     </form>
 
-    <form class="form2" method="get" action="/transactions">
+    <form method="get" action="/transactions">
       <input type="date" name="date1"/>
       <input type="date" name="date2"/>
       <input type="submit" name="Find by Date"/>
